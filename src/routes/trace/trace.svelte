@@ -4,6 +4,7 @@
 	import type { CompactedTrace, ContractsInfo } from './types';
 	import { decodeDeployData, formatEther, hexToBigInt } from 'viem';
 
+	export let blockExplorerUrl: string;
 	export let trace: CompactedTrace;
 	export let contractInfo: ContractsInfo;
 	let { action, result, subtraces } = trace;
@@ -42,15 +43,22 @@
 	<div class="prose">
 		{#if trace.type === 'create'}
 			<h4>
-				{getId(action.from)} created a contract
+				<a href={`https://${blockExplorerUrl}/address/${action.from}`} target="_blank"
+					>{getId(action.from)}</a
+				> created a contract
 			</h4>
 			<p>
 				{description}
 			</p>
 		{:else if trace.type === 'call'}
 			<h4>
-				{getId(action.from)}
-				{trace.action.callType} into {getId(trace.action.to)}
+				<a href={`https://${blockExplorerUrl}/address/${action.from}`} target="_blank"
+					>{getId(action.from)}</a
+				>
+				{trace.action.callType} into
+				<a href={`https://${blockExplorerUrl}/address/${trace.action.to}`} target="_blank"
+					>{getId(trace.action.to)}</a
+				>
 			</h4>
 			<Call action={trace.action} result={trace.result} {contractInfo} />
 		{/if}
@@ -74,7 +82,7 @@
 			<ul class="">
 				{#each subtraces as subtrace}
 					<li class="">
-						<Trace trace={subtrace} {contractInfo} />
+						<Trace trace={subtrace} {contractInfo} {blockExplorerUrl} />
 					</li>
 				{/each}
 			</ul>

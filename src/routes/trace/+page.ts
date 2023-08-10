@@ -39,7 +39,8 @@ export async function load({ fetch, url }) {
 
 	return {
 		trace,
-		contractInfo
+		contractInfo,
+		baseURL
 	};
 }
 

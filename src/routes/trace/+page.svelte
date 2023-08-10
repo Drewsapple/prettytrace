@@ -5,5 +5,5 @@
 </script>
 
 <div class="p-4">
-	<Trace trace={data.trace} contractInfo={data.contractInfo} />
+	<Trace trace={data.trace} contractInfo={data.contractInfo} blockExplorerUrl={data.baseURL} />
 </div>
