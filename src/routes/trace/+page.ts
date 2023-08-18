@@ -7,6 +7,7 @@ const contractInfo: ContractsInfo = {};
 
 const networks = {
 	1: 'eth.blockscout.com',
+	10: 'optimism.blockscout.com',
 	7777777: 'explorer.zora.energy'
 } as const;
 
