@@ -14,6 +14,7 @@
 			/>
 			<select name="network" class="select input-bordered join-item">
 				<option value="1" selected>Ethereum Mainnet</option>
+				<option value="10">OP Mainnet</option>
 				<option value="7777777">Zora Network</option>
 			</select>
 			<input type="submit" class="btn join-item" />
